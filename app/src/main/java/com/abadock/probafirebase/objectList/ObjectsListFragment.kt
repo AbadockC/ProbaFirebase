@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.abadock.probafirebase.R
+import com.abadock.probafirebase.databinding.FragmentObjectsListBinding
 
 class ObjectsListFragment : Fragment() {
 
@@ -19,13 +20,18 @@ class ObjectsListFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // TODO: Use the ViewModel
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_objects_list, container, false)
+        val binding = FragmentObjectsListBinding.inflate(inflater)
+
+        val adapter = viewModel.getAdapter()
+
+        binding.recycler.adapter = adapter
+
+        return binding.root
     }
 }
