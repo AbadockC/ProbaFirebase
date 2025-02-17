@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">probaFirebase</string>
+    <string name="login">Login</string>
+    <string name="contrasenya">Contrasenya</string>
+    <string name="usuari">Usuari</string>
+    <string name="login_">Login:</string>
+    <string name="register">Register</string>
+    <string name="register_">Register:</string>
+    <string name="preu">preu:</string>
+    <string name="nom">nom:</string>
+    <string name="new_moble">new moble</string>
+</resources>

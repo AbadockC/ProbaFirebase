@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/database"
+    app:startDestination="@id/objectsListFragment">
+
+    <fragment
+        android:id="@+id/objectsListFragment"
+        android:name="com.abadock.probafirebase.objectList.ObjectsListFragment"
+        android:label="fragment_objects_list"
+        tools:layout="@layout/fragment_objects_list" >
+        <action
+            android:id="@+id/action_objectsListFragment_to_insertFragment"
+            app:destination="@id/insertFragment" />
+        <action
+            android:id="@+id/action_objectsListFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/insertFragment"
+        android:name="com.abadock.probafirebase.objectList.InsertFragment"
+        android:label="fragment_insert"
+        tools:layout="@layout/fragment_insert" />
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.abadock.probafirebase.objectList.UpdateFragment"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" />
+</navigation>
