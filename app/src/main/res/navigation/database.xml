@@ -21,10 +21,18 @@
         android:id="@+id/insertFragment"
         android:name="com.abadock.probafirebase.objectList.InsertFragment"
         android:label="fragment_insert"
-        tools:layout="@layout/fragment_insert" />
+        tools:layout="@layout/fragment_insert" >
+        <action
+            android:id="@+id/action_insertFragment_to_objectsListFragment"
+            app:destination="@id/objectsListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/updateFragment"
         android:name="com.abadock.probafirebase.objectList.UpdateFragment"
         android:label="fragment_update"
-        tools:layout="@layout/fragment_update" />
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment_to_objectsListFragment"
+            app:destination="@id/objectsListFragment" />
+    </fragment>
 </navigation>

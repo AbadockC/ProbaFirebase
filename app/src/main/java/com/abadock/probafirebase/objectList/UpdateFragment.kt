@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.abadock.probafirebase.R
+import com.abadock.probafirebase.databinding.FragmentUpdateBinding
 
 class UpdateFragment : Fragment() {
 
@@ -26,6 +28,12 @@ class UpdateFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_update, container, false)
+        val binding = FragmentUpdateBinding.inflate(inflater)
+
+        binding.deleteButton.setOnClickListener(){
+            viewModel.deleteProduct(findNavController(), requireContext())
+        }
+
+        return binding.root
     }
 }

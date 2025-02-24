@@ -3,13 +3,14 @@ package com.abadock.probafirebase.Recycler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.abadock.probafirebase.R
+import com.abadock.probafirebase.objectList.UpdateViewModel
 
-class MobleAdapter(private val mList: List<MobleModel>, ) : RecyclerView.Adapter<MobleAdapter.ViewHolder>() {
+class MobleAdapter(private val mList: List<MobleModel>, val nav: NavController ) : RecyclerView.Adapter<MobleAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // inflates the card_view_design view
@@ -26,10 +27,11 @@ class MobleAdapter(private val mList: List<MobleModel>, ) : RecyclerView.Adapter
         val MobleModel = mList[position]
 
         holder.nom.text = MobleModel.nom
-        holder.preu.text = MobleModel.preu.toString()
+        holder.preu.text ="${MobleModel.preu} €"
 
         holder.layoutRecycler.setOnClickListener{
-
+            UpdateViewModel.selectMoble(MobleModel)
+            nav.navigate(R.id.action_objectsListFragment_to_updateFragment)
         }
 
     }

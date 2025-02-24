@@ -1,11 +1,14 @@
 package com.abadock.probafirebase.objectList
 
+import android.content.Context
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.abadock.probafirebase.R
 import com.abadock.probafirebase.databinding.FragmentObjectsListBinding
 
@@ -19,6 +22,7 @@ class ObjectsListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel.getMobles()
 
     }
 
@@ -28,9 +32,19 @@ class ObjectsListFragment : Fragment() {
     ): View {
         val binding = FragmentObjectsListBinding.inflate(inflater)
 
-        val adapter = viewModel.getAdapter()
+        viewModel.getMobles()
 
-        binding.recycler.adapter = adapter
+        binding.recycler.layoutManager = LinearLayoutManager(context)
+
+        viewModel.mobles.observe(viewLifecycleOwner) {
+
+            val adapter = viewModel.getAdapter(findNavController())
+            binding.recycler.adapter = adapter
+        }
+
+        binding.newButton.setOnClickListener() {
+            findNavController().navigate(R.id.action_objectsListFragment_to_insertFragment)
+        }
 
         return binding.root
     }

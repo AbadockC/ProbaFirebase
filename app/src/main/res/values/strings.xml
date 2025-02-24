@@ -9,4 +9,10 @@
     <string name="preu">preu:</string>
     <string name="nom">nom:</string>
     <string name="new_moble">new moble</string>
+    <string name="nom_del_producte">nom del producte</string>
+    <string name="preu_del_producte">preu del producte</string>
+    <string name="afegir_moble">Afegir moble</string>
+    <string name="returnto">return</string>
+    <string name="editar_moble">editar moble</string>
+    <string name="eliminar_producte">eliminar producte</string>
 </resources>
