@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.abadock.probafirebase.R
+import com.abadock.probafirebase.Recycler.MobleModel
 import com.abadock.probafirebase.databinding.FragmentUpdateBinding
 
 class UpdateFragment : Fragment() {
@@ -17,6 +18,7 @@ class UpdateFragment : Fragment() {
     }
 
     private val viewModel: UpdateViewModel by viewModels()
+    private val selectedMoble: MobleModel = UpdateViewModel.selectedMoble
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +32,17 @@ class UpdateFragment : Fragment() {
     ): View {
         val binding = FragmentUpdateBinding.inflate(inflater)
 
+        binding.editTextNom.setText(selectedMoble.nom)
+        binding.editTextPreu.setText(selectedMoble.preu.toString())
+
         binding.deleteButton.setOnClickListener(){
             viewModel.deleteProduct(findNavController(), requireContext())
+        }
+
+        binding.updateButton.setOnClickListener() {
+            val nom = binding.editTextNom.text.toString()
+            val preu = binding.editTextPreu.text.toString().toDouble()
+            viewModel.updateProduct(nom, preu, findNavController(), requireContext())
         }
 
         return binding.root

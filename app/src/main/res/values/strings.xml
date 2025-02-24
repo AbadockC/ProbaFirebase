@@ -13,6 +13,6 @@
     <string name="preu_del_producte">preu del producte</string>
     <string name="afegir_moble">Afegir moble</string>
     <string name="returnto">return</string>
-    <string name="editar_moble">editar moble</string>
+    <string name="update_moble">actualitzar moble</string>
     <string name="eliminar_producte">eliminar producte</string>
 </resources>

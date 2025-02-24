@@ -26,8 +26,6 @@ class UpdateViewModel : ViewModel() {
     fun deleteProduct(nav: NavController, ctx: Context){
         val db = Firebase.firestore
 
-
-
         db.collection("bd").document(selectedMoble.docid).delete()
             .addOnSuccessListener {
                 nav.navigate(R.id.action_updateFragment_to_objectsListFragment)
@@ -37,7 +35,17 @@ class UpdateViewModel : ViewModel() {
             }
     }
 
-    fun updateProduct(docid: String) {
+    fun updateProduct(nom: String, preu: Double, nav: NavController, ctx: Context) {
+
+        val db = Firebase.firestore
+
+        db.collection("bd").document(selectedMoble.docid).update(mapOf("nom" to nom, "preu" to preu))
+            .addOnSuccessListener {
+                nav.navigate(R.id.action_updateFragment_to_objectsListFragment)
+            }
+            .addOnFailureListener{
+                Toast.makeText(ctx, "No s'ha pogut actualitzar", Toast.LENGTH_SHORT).show()
+            }
 
     }
 }
